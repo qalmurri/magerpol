@@ -1,5 +1,5 @@
 GODOT=~/Downloads/Godot_v4.5.1-stable_linux.x86_64
-PROJECT=~/Project/godot/viavlo
+PROJECT=~/Project/godot/viavlo/Client/
 CPUPROJ="$PROJECT/cpp"
 
 CLEAR=false
