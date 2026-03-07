@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6bbqhq6wnykp"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Network" type="Node" parent="."]
+
+[node name="World" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Projectile" type="Node" parent="."]
+
+[node name="UI" type="Node" parent="."]
