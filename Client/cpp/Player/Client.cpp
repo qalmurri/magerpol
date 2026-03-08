@@ -1,12 +1,10 @@
 #include "Client.h"
-#include "MapManager.h"
+#include "../Core/MapManager.h"
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
-
-
 
 Node2D* find_marker(Node* parent) {
     if (!parent) return nullptr;

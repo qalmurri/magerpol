@@ -1,6 +1,6 @@
 #include "World.h"
 #include "MapManager.h"
-#include "Client.h"
+#include "../Player/Client.h"
 #include "../Gameplay/DropManager.h"
 #include "../Gameplay/CombatManager.h"
 

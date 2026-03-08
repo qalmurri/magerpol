@@ -4,11 +4,11 @@
 #include "Player/Movement.h"
 #include "Player/Rotation.h"
 #include "Player/InputHandler.h"
+#include "Player/Client.h"
 
 // Map
-#include "Map/MapManager.h"
-#include "Map/Client.h"
-#include "Map/World.h"
+#include "Core/MapManager.h"
+#include "Core/World.h"
 
 // Gameplay
 #include "Gameplay/CombatManager.h"
