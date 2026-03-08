@@ -37,3 +37,4 @@ echo "Starting Godot Editor..."
 if $EDITOR; then
     echo "Starting Godot Editor..."
     "$GODOT" --editor --path "$PROJECT"
+fi

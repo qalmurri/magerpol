@@ -8,6 +8,11 @@
 // Map
 #include "Map/MapManager.h"
 
+// Gameplay
+#include "Gameplay/CombatManager.h"
+#include "Gameplay/DropManager.h"
+#include "Gameplay/EntityManager.h"
+
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
@@ -23,6 +28,11 @@ void initialize_module(ModuleInitializationLevel p_level) {
 
     // Map
     ClassDB::register_class<MapManager>();
+
+    // Gameplay
+    ClassDB::register_class<CombatManager>();
+    ClassDB::register_class<DropManager>();
+    ClassDB::register_class<EntityManager>();
 }
 
 void uninitialize_module(ModuleInitializationLevel p_level) {

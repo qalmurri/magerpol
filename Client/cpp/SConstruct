@@ -27,7 +27,7 @@ env.Append(LINKFLAGS=[
     "-shared"
 ])
 
-sources = Glob("register_types.cpp") + Glob("Player/*.cpp") + Glob("Player/**/*.cpp") + Glob("Map/*.cpp")
+sources = Glob("register_types.cpp") + Glob("Player/*.cpp") + Glob("Map/*.cpp") + Glob("Gameplay/*.cpp")
 
 target = "debug"
 if ARGUMENTS.get("target"):
