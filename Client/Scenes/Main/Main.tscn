@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://c6bbqhq6wnykp"]
+[gd_scene load_steps=3 format=3 uid="uid://c6bbqhq6wnykp"]
+
+[ext_resource type="PackedScene" uid="uid://c060owq0msepg" path="res://Scenes/Player/Player.tscn" id="1_qtv3y"]
+[ext_resource type="PackedScene" uid="uid://c20lej0u1gstc" path="res://Scenes/UI/Joystick.tscn" id="2_cmk6n"]
 
 [node name="Main" type="Node2D"]
 
@@ -6,10 +9,31 @@
 
 [node name="World" type="Node" parent="."]
 
-[node name="Players" type="Node" parent="."]
+[node name="MapManager" type="MapManager" parent="World"]
+
+[node name="EntityManager" type="EntityManager" parent="World"]
+
+[node name="CombatManager" type="CombatManager" parent="World"]
+
+[node name="DropManager" type="DropManager" parent="World"]
+
+[node name="TileMap" type="TileMap" parent="World"]
+format = 2
+
+[node name="Ground" type="TileMapLayer" parent="World/TileMap"]
+
+[node name="Decoration" type="TileMapLayer" parent="World/TileMap"]
+
+[node name="Collision" type="TileMapLayer" parent="World/TileMap"]
+
+[node name="Clients" type="Node" parent="."]
+
+[node name="Player" parent="Clients" instance=ExtResource("1_qtv3y")]
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Projectile" type="Node" parent="."]
 
 [node name="UI" type="Node" parent="."]
+
+[node name="Joystick" parent="UI" instance=ExtResource("2_cmk6n")]

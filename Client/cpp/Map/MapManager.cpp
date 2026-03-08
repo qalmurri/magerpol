@@ -1,6 +1,6 @@
 #include "MapManager.h"
-
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
@@ -35,14 +35,19 @@ void MapManager::_bind_methods() {
 
 void MapManager::_ready() {
 
-    tilemap = get_node<TileMap>("TileMap");
+    tilemap = Object::cast_to<TileMap>(get_node_or_null("../TileMap"));
 
-    ground = tilemap->get_node<TileMapLayer>("Ground");
-    decoration = tilemap->get_node<TileMapLayer>("Decoration");
-    collision = tilemap->get_node<TileMapLayer>("Collision");
+    if (!tilemap) {
+        UtilityFunctions::printerr("MapManager: TileMap missing!");
+        return;
+    }
 
-    entity_root = get_node<Node2D>("../Entities");
-    drop_root = get_node<Node2D>("../Drops");
+    ground = Object::cast_to<TileMapLayer>(tilemap->get_node_or_null("Ground"));
+    decoration = Object::cast_to<TileMapLayer>(tilemap->get_node_or_null("Decoration"));
+    collision = Object::cast_to<TileMapLayer>(tilemap->get_node_or_null("Collision"));
+
+    entity_root = Object::cast_to<Node2D>(get_node_or_null("../EntityManager"));
+    drop_root = Object::cast_to<Node2D>(get_node_or_null("../DropManager"));
 }
 
 Vector2 MapManager::grid_to_iso(Vector2 grid) {

@@ -40,6 +40,7 @@ farming
 event trigger
 tanpa sistem berat seperti pathfinding.
 
+====
 World
 ├── MapManager
 ├── EntityManager
@@ -54,3 +55,4 @@ World
 │   ├── Enemies
 │   └── NPC
 └── Drops
+
