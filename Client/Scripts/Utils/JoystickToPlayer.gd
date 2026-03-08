@@ -1,7 +1,7 @@
-extends Node2D
+extends Node
 
-@onready var player = $Player
-@onready var joystick = $UI/Joystick
+@onready var player = $"../Client/Player"
+@onready var joystick = $"../../UI/Joystick"
 
 func _ready():
 	var input_handler = player.get_node_or_null("InputHandler")

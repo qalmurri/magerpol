@@ -23,8 +23,6 @@ Vector2 InputHandler::get_joystick_direction() {
 
     Variant dir = joystick_node->call("direction");
 
-    UtilityFunctions::print("Joystick dir:", dir);
-
     if (dir.get_type() == Variant::VECTOR2) {
         return dir;
     }

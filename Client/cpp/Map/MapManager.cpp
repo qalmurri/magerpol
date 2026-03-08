@@ -31,6 +31,18 @@ void MapManager::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("plant_crop","grid","source","atlas"), &MapManager::plant_crop);
     ClassDB::bind_method(D_METHOD("harvest_crop","grid"), &MapManager::harvest_crop);
+
+    ClassDB::bind_method(D_METHOD("debug_grid_world", "grid"), &MapManager::debug_grid_world);
+}
+
+void MapManager::debug_grid_world(Vector2i grid) {
+    Vector2 world = grid_to_world(grid);
+    Vector2 back_to_grid = world_to_grid(world);
+
+    UtilityFunctions::print("=== Debug Grid ↔ World ===");
+    UtilityFunctions::print("Input Grid: ", grid);
+    UtilityFunctions::print("Grid → World: ", world);
+    UtilityFunctions::print("World → Grid: ", back_to_grid);
 }
 
 void MapManager::_ready() {
@@ -49,6 +61,9 @@ void MapManager::_ready() {
 
     entity_root = Object::cast_to<Node2D>(get_node_or_null("../EntityManager"));
     drop_root = Object::cast_to<Node2D>(get_node_or_null("../DropManager"));
+
+    debug_grid_world(Vector2i(2,3));
+    debug_grid_world(Vector2i(5,0));
 }
 
 Vector2 MapManager::grid_to_iso(Vector2 grid) {

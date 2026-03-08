@@ -36,6 +36,7 @@ protected:
 public:
 
     void _ready();
+    void debug_grid_world(Vector2i grid);
 
     // coordinate
     Vector2 grid_to_iso(Vector2 grid);

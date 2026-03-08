@@ -7,6 +7,8 @@
 
 // Map
 #include "Map/MapManager.h"
+#include "Map/Client.h"
+#include "Map/World.h"
 
 // Gameplay
 #include "Gameplay/CombatManager.h"
@@ -28,6 +30,8 @@ void initialize_module(ModuleInitializationLevel p_level) {
 
     // Map
     ClassDB::register_class<MapManager>();
+    ClassDB::register_class<Client>();
+    ClassDB::register_class<World>();
 
     // Gameplay
     ClassDB::register_class<CombatManager>();

@@ -1,0 +1,37 @@
+#ifndef WORLD_H
+#define WORLD_H
+
+#include <godot_cpp/classes/node2d.hpp>
+
+using namespace godot;
+
+// Forward declaration semua manager
+class MapManager;
+class Client;
+class DropManager;
+class CombatManager;
+
+class World : public Node2D {
+    GDCLASS(World, Node2D)
+
+private:
+    // pointer ke manager
+    MapManager* map_manager = nullptr;
+    Client* client = nullptr;
+    DropManager* drop_manager = nullptr;
+    CombatManager* combat_manager = nullptr;
+
+protected:
+    static void _bind_methods();
+
+public:
+    void _ready();
+
+    // Getter supaya manager bisa diakses dari World
+    MapManager* get_map_manager() const { return map_manager; }
+    Client* get_client() const { return client; }
+    DropManager* get_drop_manager() const { return drop_manager; }
+    CombatManager* get_combat_manager() const { return combat_manager; }
+};
+
+#endif
