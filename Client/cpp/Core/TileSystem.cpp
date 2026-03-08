@@ -1,3 +1,7 @@
+/*
+File ini mengelola interaksi langsung dengan layer TileMap. Ia memiliki akses ke layer tanah (ground), dekorasi, dan tabrakan (collision). Fungsinya meliputi mengecek apakah suatu petak bisa diinjak, menaruh atau menghapus tile, hingga sistem bercocok tanam (menanam dan memanen tanaman) pada layer dekorasi.
+*/
+
 #include "TileSystem.h"
 
 #include <godot_cpp/core/class_db.hpp>

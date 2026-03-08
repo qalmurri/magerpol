@@ -1,3 +1,7 @@
+/*
+File ini bertanggung jawab atas sistem looting atau pemunculan barang setelah suatu kejadian (seperti musuh mati). Ia menangani proses instantiate objek dari PackedScene (misalnya koin emas) ke dalam dunia permainan. File ini juga mengatur variasi posisi munculnya barang secara acak di sekitar titik koordinat tertentu agar tumpukan barang tidak terlihat bertumpuk kaku di satu titik yang sama.
+*/
+
 #include "DropManager.h"
 
 #include <godot_cpp/core/class_db.hpp>

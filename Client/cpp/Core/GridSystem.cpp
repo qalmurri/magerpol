@@ -1,3 +1,7 @@
+/*
+File ini adalah sistem database sederhana untuk melacak posisi. Ia menyimpan catatan (menggunakan map) tentang setiap objek Node2D berada di koordinat grid mana. Ini sangat berguna agar sistem tahu posisi logis sebuah entitas tanpa harus selalu melakukan perhitungan fisik yang berat.
+*/
+
 #include "GridSystem.h"
 
 #include <godot_cpp/core/class_db.hpp>

@@ -1,3 +1,7 @@
+/*
+File ini adalah gerbang utama (Facade) untuk semua urusan terkait peta. Daripada memanggil banyak sistem kecil secara terpisah, komponen lain cukup memanggil MapManager. Ia menyatukan logika koordinat, pengaturan tile, dan penempatan entitas. File ini menghubungkan data visual dari TileMap Godot dengan logika backend yang Anda buat di C++.
+*/
+
 #include "MapManager.h"
 
 #include <godot_cpp/core/class_db.hpp>

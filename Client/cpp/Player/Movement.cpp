@@ -1,3 +1,7 @@
+/*
+File ini adalah komponen logika pergerakan yang bekerja dengan cara mengambil data arah dari InputHandler dan meneruskannya ke kelas Players. Berbeda dengan rotasi yang berbasis derajat, file ini lebih fokus pada logika perpindahan posisi antar tile atau koordinat. Ia berfungsi sebagai penghubung yang memerintahkan parent (Pemain) untuk mencoba bergerak ke arah tertentu setiap frame.
+*/
+
 #include "Movement.h"
 
 #include "Players.h"

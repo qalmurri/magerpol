@@ -1,3 +1,7 @@
+/*
+File ini menangani logika interaksi antar entitas yang berkaitan dengan pertarungan. Fungsi utamanya adalah memanipulasi variabel status (seperti atribut health) pada objek target tanpa perlu tahu detail internal objek tersebut. Selain mengurangi nyawa dan menghapus objek jika nyawanya habis, file ini juga menangani efek fisik sederhana seperti knockback (dorongan) saat sebuah entitas terkena serangan.
+*/
+
 #include "CombatManager.h"
 
 #include <godot_cpp/core/class_db.hpp>

@@ -1,3 +1,7 @@
+/*
+File ini berisi logika matematika untuk konversi ruang. Ia menangani perhitungan proyeksi Isometrik, yaitu mengubah koordinat grid 2D biasa (X, Y) menjadi posisi visual miring (belah ketupat) yang terlihat di layar, dan sebaliknya. Ini adalah "otak" di balik penempatan objek agar terlihat presisi di dunia isometrik.
+*/
+
 #include "CoordinateSystem.h"
 
 #include <godot_cpp/core/class_db.hpp>

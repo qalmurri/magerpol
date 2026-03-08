@@ -1,3 +1,7 @@
+/*
+File ini berfungsi sebagai pusat inisialisasi (Orchestrator) seluruh permainan. Saat level dimuat (_ready), file ini secara otomatis mencari dan menghubungkan semua manajer (Map, Drop, Combat, Entity) agar bisa saling berkomunikasi. Ia juga bertanggung jawab menyiapkan pemain di posisi awal (grid 0,0) dan memantau posisi pemain secara real-time untuk dikonversi ke koordinat grid dalam loop permainan.
+*/
+
 #include "World.h"
 
 #include "MapManager.h"

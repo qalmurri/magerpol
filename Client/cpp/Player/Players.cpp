@@ -1,3 +1,7 @@
+/*
+File ini bertindak sebagai pengelola utama entitas pemain (Player) yang menjembatani hubungan antara visual karakter, sistem peta (MapManager), dan sistem manajemen entitas (EntityManager). Tugas utamanya adalah menangani penempatan pemain pada sistem koordinat grid, memastikan visual karakter sinkron dengan posisi teknis di peta, serta melakukan validasi apakah sebuah langkah boleh dilakukan (misalnya mengecek apakah area target bisa dilewati/walkable).
+*/
+
 #include "Players.h"
 
 #include "../Core/MapManager.h"

@@ -1,3 +1,7 @@
+/*
+File ini bertanggung jawab atas logika rotasi objek berdasarkan input keyboard. Komponen ini memungkinkan sebuah objek (seperti karakter atau kamera) untuk berputar ke kiri atau ke kanan menggunakan aksi "ui_left" dan "ui_right". File ini juga mengekspos variabel rotation_speed ke editor Godot agar kecepatannya bisa diatur langsung melalui Inspector tanpa mengubah kode.
+*/
+
 #include "Rotation.h"
 
 #include <godot_cpp/classes/engine.hpp>

@@ -1,3 +1,7 @@
+/*
+File ini adalah pusat kendali untuk semua entitas aktif di dalam permainan (Pemain, Musuh, dan NPC). Ia bertugas melacak siapa berada di mana dalam sistem grid menggunakan entity_grid. Selain mencatat pendaftaran entitas baru, file ini juga menyediakan fungsi pencarian penting, seperti mengecek apakah sebuah petak sedang ditempati atau mencari musuh terdekat dari posisi tertentu untuk kebutuhan sistem kecerdasan buatan (AI).
+*/
+
 #include "EntityManager.h"
 
 #include <godot_cpp/core/class_db.hpp>

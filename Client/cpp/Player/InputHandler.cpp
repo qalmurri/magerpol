@@ -1,3 +1,7 @@
+/*
+File ini berfungsi sebagai abstraksi atau penyaring input, khususnya untuk menangani input dari joystick atau kontrol virtual. Alih-alih membaca input mentah di setiap file, InputHandler menyediakan fungsi-fungsi sederhana seperti is_moving_right() atau get_joystick_direction() yang bisa digunakan oleh komponen lain. Ini membuat sistem kontrol menjadi lebih terpusat dan mudah diganti jika nantinya Anda ingin mengubah metode input (misalnya dari joystick ke layar sentuh).
+*/
+
 #include "InputHandler.h"
 
 #include <godot_cpp/classes/node.hpp>
