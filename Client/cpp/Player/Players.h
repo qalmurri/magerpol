@@ -1,5 +1,5 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef PLAYERS_H
+#define PLAYERS_H
 
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
@@ -9,8 +9,8 @@ using namespace godot;
 
 class MapManager; // forward declaration
 
-class Client : public Node2D {
-    GDCLASS(Client, Node2D)
+class Players : public Node2D {
+    GDCLASS(Players, Node2D)
 
 private:
     Vector2i grid_pos = Vector2i(0, 0);

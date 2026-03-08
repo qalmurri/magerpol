@@ -38,11 +38,6 @@ void MapManager::_bind_methods() {
 void MapManager::debug_grid_world(Vector2i grid) {
     Vector2 world = grid_to_world(grid);
     Vector2 back_to_grid = world_to_grid(world);
-
-    UtilityFunctions::print("=== Debug Grid ↔ World ===");
-    UtilityFunctions::print("Input Grid: ", grid);
-    UtilityFunctions::print("Grid → World: ", world);
-    UtilityFunctions::print("World → Grid: ", back_to_grid);
 }
 
 void MapManager::_ready() {

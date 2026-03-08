@@ -4,9 +4,9 @@
 #include "Player/Movement.h"
 #include "Player/Rotation.h"
 #include "Player/InputHandler.h"
-#include "Player/Client.h"
+#include "Player/Players.h"
 
-// Map
+// Core 
 #include "Core/MapManager.h"
 #include "Core/World.h"
 
@@ -27,10 +27,10 @@ void initialize_module(ModuleInitializationLevel p_level) {
     ClassDB::register_class<Movement>();
     ClassDB::register_class<Rotation>();
     ClassDB::register_class<InputHandler>();
+    ClassDB::register_class<Players>();
 
-    // Map
+    // Core 
     ClassDB::register_class<MapManager>();
-    ClassDB::register_class<Client>();
     ClassDB::register_class<World>();
 
     // Gameplay

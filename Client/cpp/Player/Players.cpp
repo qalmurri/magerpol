@@ -1,4 +1,4 @@
-#include "Client.h"
+#include "Players.h"
 #include "../Core/MapManager.h"
 #include "../Gameplay/EntityManager.h"
 #include <godot_cpp/core/class_db.hpp>
@@ -21,18 +21,18 @@ Node2D* find_marker(Node* parent) {
     return nullptr;
 }
 
-void Client::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("set_grid_pos", "grid"), &Client::set_grid_pos);
-    ClassDB::bind_method(D_METHOD("get_grid_pos"), &Client::get_grid_pos);
-    ClassDB::bind_method(D_METHOD("move_to_grid", "grid"), &Client::move_to_grid);
+void Players::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_grid_pos", "grid"), &Players::set_grid_pos);
+    ClassDB::bind_method(D_METHOD("get_grid_pos"), &Players::get_grid_pos);
+    ClassDB::bind_method(D_METHOD("move_to_grid", "grid"), &Players::move_to_grid);
 }
 
-void Client::_ready() {
-    UtilityFunctions::print("Client ready");
+void Players::_ready() {
+    UtilityFunctions::print("Players ready");
 
     player_visual = Object::cast_to<Node2D>(get_node_or_null("Player"));
     if (!player_visual) {
-        UtilityFunctions::printerr("Client: Player visual not found!");
+        UtilityFunctions::printerr("Players: Player visual not found!");
         return;
     }
 
@@ -47,19 +47,19 @@ void Client::_ready() {
         move_to_grid(grid_pos);
 }
 
-void Client::set_grid_pos(Vector2i grid) {
+void Players::set_grid_pos(Vector2i grid) {
     grid_pos = grid;
     move_to_grid(grid);
 }
 
-void Client::move_to_grid(Vector2i grid) {
+void Players::move_to_grid(Vector2i grid) {
     if (!map_manager || !player_visual) return;
 
     grid_pos = grid;
     Vector2 world_pos = map_manager->get_tile_center(grid); // pakai MapManager
     player_visual->set_position(world_pos);
 
-    UtilityFunctions::print("Client grid_pos: ", grid_pos);
+    UtilityFunctions::print("Players grid_pos: ", grid_pos);
 
     // cari Marker rekursif di Player
     Node2D* marker = find_marker(player_visual);
@@ -71,6 +71,6 @@ void Client::move_to_grid(Vector2i grid) {
     }
 }
 
-void Client::set_map_manager(MapManager* manager) {
+void Players::set_map_manager(MapManager* manager) {
     map_manager = manager;
 }

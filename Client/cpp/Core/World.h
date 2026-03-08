@@ -7,7 +7,7 @@ using namespace godot;
 
 // Forward declaration semua manager
 class MapManager;
-class Client;
+class Players;
 class DropManager;
 class CombatManager;
 class EntityManager;
@@ -18,7 +18,7 @@ class World : public Node2D {
 private:
     // pointer ke manager
     MapManager* map_manager = nullptr;
-    Client* client = nullptr;
+    Players* players = nullptr;
     DropManager* drop_manager = nullptr;
     CombatManager* combat_manager = nullptr;
 
@@ -30,7 +30,7 @@ public:
 
     // Getter supaya manager bisa diakses dari World
     MapManager* get_map_manager() const { return map_manager; }
-    Client* get_client() const { return client; }
+    Players* get_players() const { return players; }
     DropManager* get_drop_manager() const { return drop_manager; }
     CombatManager* get_combat_manager() const { return combat_manager; }
 };

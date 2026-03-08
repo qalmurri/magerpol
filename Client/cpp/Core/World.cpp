@@ -1,6 +1,6 @@
 #include "World.h"
 #include "MapManager.h"
-#include "../Player/Client.h"
+#include "../Player/Players.h"
 #include "../Gameplay/DropManager.h"
 #include "../Gameplay/CombatManager.h"
 #include "../Gameplay/EntityManager.h"
@@ -9,9 +9,6 @@
 #include <godot_cpp/core/class_db.hpp>
 
 using namespace godot;
-
-
-
 
 void World::_bind_methods() {
     // Bisa bind method jika mau expose ke GDScript
@@ -30,18 +27,18 @@ void World::_ready() {
         return;
     }
 
-    // Daftarkan Client/Player di EntityManager
-    Client* client_node = Object::cast_to<Client>(entity_manager->get_node_or_null("Client"));
-    if (client_node) {
+    // Daftarkan Players/Player di EntityManager
+    Players* players_node = Object::cast_to<Players>(entity_manager->get_node_or_null("Players"));
+    if (players_node) {
         Node2D* player = Object::cast_to<Node2D>(
-            client_node->get_node_or_null("Player")
+            players_node->get_node_or_null("Player")
         );
         
         if (player) {
             entity_manager->register_player(player);
         }
-        client_node->set_map_manager(map_manager);
+        players_node->set_map_manager(map_manager);
     } else {
-        UtilityFunctions::printerr("Client not found inside EntityManager!");
+        UtilityFunctions::printerr("Players not found inside EntityManager!");
     }
 }
