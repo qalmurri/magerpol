@@ -1,6 +1,6 @@
 #include "Client.h"
 #include "../Core/MapManager.h"
-
+#include "../Gameplay/EntityManager.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -30,20 +30,21 @@ void Client::_bind_methods() {
 void Client::_ready() {
     UtilityFunctions::print("Client ready");
 
-    // ambil MapManager dari parent/sibling
-    map_manager = Object::cast_to<MapManager>(get_node_or_null("../MapManager"));
-    if (!map_manager) {
-        UtilityFunctions::printerr("Client: MapManager not found!");
-    }
-
-    // ambil Player child
     player_visual = Object::cast_to<Node2D>(get_node_or_null("Player"));
     if (!player_visual) {
         UtilityFunctions::printerr("Client: Player visual not found!");
+        return;
     }
 
-    // set posisi awal player
-    move_to_grid(grid_pos);
+    EntityManager* entity_manager =
+        Object::cast_to<EntityManager>(get_parent());
+
+    if (entity_manager) {
+        entity_manager->register_player(player_visual);
+    }
+
+    if (map_manager)
+        move_to_grid(grid_pos);
 }
 
 void Client::set_grid_pos(Vector2i grid) {

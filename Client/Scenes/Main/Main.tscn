@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6bbqhq6wnykp"]
 
-[ext_resource type="PackedScene" uid="uid://c060owq0msepg" path="res://Scenes/Player/Player.tscn" id="1_qtv3y"]
+[ext_resource type="Script" uid="uid://dd6b4ukj0xynr" path="res://Scenes/Main/main.gd" id="1_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://c20lej0u1gstc" path="res://Scenes/UI/Joystick.tscn" id="2_cmk6n"]
 
 [sub_resource type="TileSet" id="TileSet_qtv3y"]
@@ -8,10 +8,13 @@ tile_shape = 1
 tile_size = Vector2i(32, 18)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_cmk6n")
 
 [node name="Network" type="Node" parent="."]
 
 [node name="World" type="World" parent="."]
+
+[node name="MapManager" type="MapManager" parent="World"]
 
 [node name="TileMap" type="TileMap" parent="World"]
 format = 2
@@ -23,22 +26,19 @@ tile_set = SubResource("TileSet_qtv3y")
 
 [node name="Collision" type="TileMapLayer" parent="World/TileMap"]
 
-[node name="MapManager" type="MapManager" parent="World"]
-
 [node name="EntityManager" type="EntityManager" parent="World"]
+
+[node name="Enemies" type="Node" parent="World/EntityManager"]
+
+[node name="Projectiles" type="Node" parent="World/EntityManager"]
+
+[node name="NPCs" type="Node" parent="World/EntityManager"]
+
+[node name="Animals" type="Node" parent="World/EntityManager"]
 
 [node name="CombatManager" type="CombatManager" parent="World"]
 
 [node name="DropManager" type="DropManager" parent="World"]
-
-[node name="Client" type="Client" parent="World"]
-
-[node name="Player" parent="World/Client" instance=ExtResource("1_qtv3y")]
-position = Vector2(32, 16)
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Projectile" type="Node" parent="."]
 
 [node name="UI" type="Node" parent="."]
 

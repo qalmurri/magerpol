@@ -10,6 +10,7 @@ class MapManager;
 class Client;
 class DropManager;
 class CombatManager;
+class EntityManager;
 
 class World : public Node2D {
     GDCLASS(World, Node2D)
