@@ -7,8 +7,6 @@
 using namespace godot;
 
 void Movement::_ready() {
-
-    map_manager = get_node<MapManager>("../../MapManager");
 }
 
 void Movement::_bind_methods() {
@@ -53,4 +51,8 @@ void Movement::move_to(Vector2i new_grid) {
     owner->set_position(world_pos);
 
     map_manager->update_entity_grid(owner, new_grid);
+}
+
+void Movement::set_map_manager(MapManager *mm) {
+    map_manager = mm;
 }

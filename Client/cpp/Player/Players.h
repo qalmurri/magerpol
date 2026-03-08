@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 #include <godot_cpp/core/object.hpp>
+#include "../Core/MapManager.h"
 
 using namespace godot;
 

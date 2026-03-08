@@ -20,3 +20,5 @@ shape = SubResource("RectangleShape2D_1lttt")
 [node name="InputHandler" type="InputHandler" parent="."]
 
 [node name="Marker" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

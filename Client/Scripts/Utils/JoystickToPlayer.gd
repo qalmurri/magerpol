@@ -1,7 +1,7 @@
 extends Node
 
-@onready var player = $"../Client/Player"
-@onready var joystick = $"../../UI/Joystick"
+@onready var player = $EntityManager/Players/Player
+@onready var joystick = $"../UI/CanvasLayer/Joystick"
 
 func _ready():
 	var input_handler = player.get_node_or_null("InputHandler")

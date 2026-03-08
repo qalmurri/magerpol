@@ -1,6 +1,7 @@
 #include "Players.h"
 #include "../Core/MapManager.h"
 #include "../Gameplay/EntityManager.h"
+#include "Movement.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
@@ -70,8 +71,15 @@ void Players::move_to_grid(Vector2i grid) {
     }
 }
 
-void Players::set_map_manager(MapManager* manager) {
+void Players::set_map_manager(MapManager *manager) {
     map_manager = manager;
+
+    for (int i = 0; i < get_child_count(); i++) {
+        Movement *movement = Object::cast_to<Movement>(get_child(i));
+        if (movement) {
+            movement->set_map_manager(manager);
+        }
+    }
 }
 
 void Players::try_move(Vector2 dir) {

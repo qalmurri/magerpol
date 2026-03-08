@@ -1,6 +1,8 @@
 #include "EntityManager.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/core/class_db.hpp>
+#include "../Core/MapManager.h"
+#include "../Player/Players.h"
 
 using namespace godot;
 
@@ -29,6 +31,12 @@ Node2D* EntityManager::get_entity_at(Vector2i grid) {
 
 void EntityManager::_ready() {
     UtilityFunctions::print("EntityManager ready");
+
+    MapManager *map_manager = get_node<MapManager>("../MapManager");
+    Players *players = get_node<Players>("Players");
+    if (players) {
+        players->set_map_manager(map_manager);
+    }
 }
 
 void EntityManager::_bind_methods() {}

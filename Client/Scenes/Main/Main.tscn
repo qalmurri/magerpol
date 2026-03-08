@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6bbqhq6wnykp"]
+[gd_scene load_steps=6 format=3 uid="uid://c6bbqhq6wnykp"]
 
 [ext_resource type="Script" uid="uid://dd6b4ukj0xynr" path="res://Scenes/Main/main.gd" id="1_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://c20lej0u1gstc" path="res://Scenes/UI/Joystick.tscn" id="2_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://c060owq0msepg" path="res://Scenes/Player/Player.tscn" id="2_i3fi7"]
+[ext_resource type="Script" uid="uid://bclj0anie6hgp" path="res://Scripts/Utils/JoystickToPlayer.gd" id="2_o8wgc"]
 
 [sub_resource type="TileSet" id="TileSet_qtv3y"]
 tile_shape = 1
@@ -14,6 +15,7 @@ script = ExtResource("1_cmk6n")
 [node name="Network" type="Node" parent="."]
 
 [node name="World" type="World" parent="."]
+script = ExtResource("2_o8wgc")
 
 [node name="MapManager" type="MapManager" parent="World"]
 
@@ -40,7 +42,6 @@ tile_set = SubResource("TileSet_qtv3y")
 [node name="Players" type="Players" parent="World/EntityManager"]
 
 [node name="Player" parent="World/EntityManager/Players" instance=ExtResource("2_i3fi7")]
-position = Vector2(168, 160)
 
 [node name="CombatManager" type="CombatManager" parent="World"]
 
@@ -48,5 +49,7 @@ position = Vector2(168, 160)
 
 [node name="UI" type="Node" parent="."]
 
-[node name="Joystick" parent="UI" instance=ExtResource("2_cmk6n")]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="Joystick" parent="UI/CanvasLayer" instance=ExtResource("2_cmk6n")]
 position = Vector2(1, 288)
