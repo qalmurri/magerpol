@@ -1,5 +1,5 @@
 extends Node
 
 func _ready():
-	print_tree_pretty()
-	# pass
+	# print_tree_pretty()
+	pass
