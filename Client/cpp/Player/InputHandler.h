@@ -1,10 +1,9 @@
 #ifndef INPUT_HANDLER_H
 #define INPUT_HANDLER_H
 
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input.hpp>
-#include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/variant/vector2.hpp>
 
 using namespace godot;
 
@@ -15,13 +14,14 @@ protected:
     static void _bind_methods();
 
 private:
-    Node* joystick_node = nullptr; // pointer ke node Joystick
+    Node *joystick_node = nullptr;
 
 public:
     InputHandler() {}
     ~InputHandler() {}
 
-    void set_joystick(Node* Joystick) { joystick_node = Joystick; }
+    void set_joystick(Node *Joystick) { joystick_node = Joystick; }
+
     Vector2 get_joystick_direction();
 
     bool is_moving_right();

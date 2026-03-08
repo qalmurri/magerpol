@@ -10,7 +10,6 @@ class DropManager : public Node2D {
     GDCLASS(DropManager, Node2D)
 
 private:
-
     Ref<PackedScene> gold_scene;
 
 protected:
@@ -18,6 +17,7 @@ protected:
 
 public:
     void _ready();
+
     void set_gold_scene(Ref<PackedScene> scene);
     void drop_gold(Vector2 pos, int amount);
 };

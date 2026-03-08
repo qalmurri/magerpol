@@ -16,7 +16,7 @@ protected:
     static void _bind_methods();
 
 public:
-    void register_tile_event(Vector2i grid,String event);
+    void register_tile_event(Vector2i grid, String event);
     String trigger_tile_event(Vector2i grid);
 };
 

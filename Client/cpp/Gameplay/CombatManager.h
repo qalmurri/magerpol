@@ -14,6 +14,7 @@ protected:
 
 public:
     void _ready();
+
     void apply_damage(Node2D *target, int damage);
     void apply_knockback(Node2D *target, Vector2 force);
 };

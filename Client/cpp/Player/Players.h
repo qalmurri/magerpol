@@ -2,13 +2,14 @@
 #define PLAYERS_H
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/variant/vector2i.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/vector2i.hpp>
+
 #include "../Core/MapManager.h"
 
 using namespace godot;
 
-class MapManager; // forward declaration
+class MapManager;
 
 class Players : public Node2D {
     GDCLASS(Players, Node2D)
@@ -27,8 +28,9 @@ public:
 
     void set_grid_pos(Vector2i grid);
     Vector2i get_grid_pos() const { return grid_pos; }
+
     void move_to_grid(Vector2i grid);
-    void set_map_manager(MapManager* manager);
+    void set_map_manager(MapManager *manager);
 };
 
 #endif

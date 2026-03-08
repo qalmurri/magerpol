@@ -1,8 +1,8 @@
 #ifndef ROTATION_H
 #define ROTATION_H
 
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/input.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 
 using namespace godot;
 
@@ -21,8 +21,13 @@ public:
 
     void _process(double delta);
 
-    void set_rotation_speed(float r) { rotation_speed = r; }
-    float get_rotation_speed() const { return rotation_speed; }
+    void set_rotation_speed(float r) {
+        rotation_speed = r;
+    }
+
+    float get_rotation_speed() const {
+        return rotation_speed;
+    }
 };
 
 #endif
