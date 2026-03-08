@@ -1,4 +1,5 @@
 #include "MapManager.h"
+
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -6,6 +7,10 @@
 using namespace godot;
 
 void MapManager::_bind_methods() {
+
+    ClassDB::bind_method(D_METHOD("set_entity_grid","node","grid"), &MapManager::set_entity_grid);
+    ClassDB::bind_method(D_METHOD("update_entity_grid","node","grid"), &MapManager::update_entity_grid);
+    ClassDB::bind_method(D_METHOD("get_entity_grid","node"), &MapManager::get_entity_grid);
 
     ClassDB::bind_method(D_METHOD("grid_to_iso","grid"), &MapManager::grid_to_iso);
     ClassDB::bind_method(D_METHOD("iso_to_grid","iso"), &MapManager::iso_to_grid);
@@ -18,6 +23,7 @@ void MapManager::_bind_methods() {
     ClassDB::bind_method(D_METHOD("remove_tile","grid"), &MapManager::remove_tile);
 
     ClassDB::bind_method(D_METHOD("is_walkable","grid"), &MapManager::is_walkable);
+
     ClassDB::bind_method(D_METHOD("snap_to_grid","world"), &MapManager::snap_to_grid);
     ClassDB::bind_method(D_METHOD("get_tile_center","grid"), &MapManager::get_tile_center);
 
@@ -31,16 +37,10 @@ void MapManager::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("plant_crop","grid","source","atlas"), &MapManager::plant_crop);
     ClassDB::bind_method(D_METHOD("harvest_crop","grid"), &MapManager::harvest_crop);
-
-    ClassDB::bind_method(D_METHOD("debug_grid_world", "grid"), &MapManager::debug_grid_world);
-}
-
-void MapManager::debug_grid_world(Vector2i grid) {
-    Vector2 world = grid_to_world(grid);
-    Vector2 back_to_grid = world_to_grid(world);
 }
 
 void MapManager::_ready() {
+
     UtilityFunctions::print("MapManager ready");
 
     tilemap = Object::cast_to<TileMap>(get_node_or_null("../TileMap"));
@@ -57,120 +57,154 @@ void MapManager::_ready() {
     entity_root = Object::cast_to<Node2D>(get_node_or_null("../EntityManager"));
     drop_root = Object::cast_to<Node2D>(get_node_or_null("../DropManager"));
 
-    debug_grid_world(Vector2i(2,3));
-    debug_grid_world(Vector2i(5,0));
+    coord = memnew(CoordinateSystem);
+    grid = memnew(GridSystem);
+    tile = memnew(TileSystem);
+    events = memnew(TileEventManager);
+
+    tile->setup(ground, decoration, collision);
 }
 
-Vector2 MapManager::grid_to_iso(Vector2 grid) {
+////////////////////////
+// GRID SYSTEM
+////////////////////////
 
-    float x = (grid.x - grid.y) * (tile_width * 0.5);
-    float y = (grid.x + grid.y) * (tile_height * 0.5);
+void MapManager::set_entity_grid(Node2D* node, Vector2i grid_pos) {
 
-    return Vector2(x,y);
+    grid->set_entity_grid(node, grid_pos);
+}
+
+void MapManager::update_entity_grid(Node2D* node, Vector2i grid_pos) {
+
+    grid->update_entity_grid(node, grid_pos);
+}
+
+Vector2i MapManager::get_entity_grid(Node2D* node) {
+
+    return grid->get_entity_grid(node);
+}
+
+////////////////////////
+// COORDINATE SYSTEM
+////////////////////////
+
+Vector2 MapManager::grid_to_iso(Vector2 grid_pos) {
+
+    return coord->grid_to_iso(grid_pos);
 }
 
 Vector2 MapManager::iso_to_grid(Vector2 iso) {
 
-    float x = (iso.x/(tile_width*0.5)+iso.y/(tile_height*0.5))*0.5;
-    float y = (iso.y/(tile_height*0.5)-iso.x/(tile_width*0.5))*0.5;
-
-    return Vector2(x,y);
+    return coord->iso_to_grid(iso);
 }
 
-Vector2 MapManager::grid_to_world(Vector2 grid) {
+Vector2 MapManager::grid_to_world(Vector2i grid_pos) {
 
-    return grid_to_iso(grid);
+    return coord->grid_to_world(grid_pos);
 }
 
-Vector2 MapManager::world_to_grid(Vector2 world) {
+Vector2i MapManager::world_to_grid(Vector2 world) {
 
-    Vector2 g = iso_to_grid(world);
-    return Vector2(Math::floor(g.x),Math::floor(g.y));
+    return coord->world_to_grid(world);
 }
 
-int MapManager::get_tile(Vector2i grid) {
+////////////////////////
+// TILE SYSTEM
+////////////////////////
 
-    return ground->get_cell_source_id(grid);
+int MapManager::get_tile(Vector2i grid_pos) {
+
+    return tile->get_tile(grid_pos);
 }
 
-void MapManager::set_tile(Vector2i grid,int source_id,Vector2i atlas) {
+void MapManager::set_tile(Vector2i grid_pos,int source_id,Vector2i atlas) {
 
-    ground->set_cell(grid,source_id,atlas);
+    tile->set_tile(grid_pos, source_id, atlas);
 }
 
-void MapManager::remove_tile(Vector2i grid) {
+void MapManager::remove_tile(Vector2i grid_pos) {
 
-    ground->erase_cell(grid);
+    tile->remove_tile(grid_pos);
 }
 
-bool MapManager::is_walkable(Vector2i grid) {
+bool MapManager::is_walkable(Vector2i grid_pos) {
 
-    if (collision->get_cell_source_id(grid) != -1)
-        return false;
-
-    return true;
+    return tile->is_walkable(grid_pos);
 }
+
+////////////////////////
+// HELPERS
+////////////////////////
 
 Vector2 MapManager::snap_to_grid(Vector2 world) {
 
-    Vector2 grid = world_to_grid(world);
-    return grid_to_world(grid);
+    Vector2i grid_pos = world_to_grid(world);
+    return grid_to_world(grid_pos);
 }
 
-Vector2 MapManager::get_tile_center(Vector2i grid) {
+Vector2 MapManager::get_tile_center(Vector2i grid_pos) {
 
-    Vector2 pos = grid_to_world(grid);
-    pos.x += tile_width*0.5;
-    pos.y += tile_height*0.5;
-
-    return pos;
+    return grid_to_world(grid_pos);
 }
 
-void MapManager::spawn_on_grid(Node2D *node,Vector2i grid) {
+////////////////////////
+// ENTITY
+////////////////////////
+
+void MapManager::spawn_on_grid(Node2D *node, Vector2i grid_pos) {
 
     if(!node) return;
 
-    node->set_position(get_tile_center(grid));
+    node->set_position(get_tile_center(grid_pos));
     entity_root->add_child(node);
 
-    entity_grid.insert(grid,node);
+    grid->set_entity_grid(node, grid_pos);
 }
 
-void MapManager::move_entity_to_grid(Node2D *node,Vector2i grid) {
+void MapManager::move_entity_to_grid(Node2D *node, Vector2i grid_pos) {
 
     if(!node) return;
 
-    node->set_position(get_tile_center(grid));
-    entity_grid.insert(grid,node);
+    node->set_position(get_tile_center(grid_pos));
+    grid->update_entity_grid(node, grid_pos);
 }
 
-void MapManager::register_tile_event(Vector2i grid,String event) {
+////////////////////////
+// TILE EVENTS
+////////////////////////
 
-    tile_events.insert(grid,event);
+void MapManager::register_tile_event(Vector2i grid_pos,String event) {
+
+    events->register_tile_event(grid_pos, event);
 }
 
-String MapManager::trigger_tile_event(Vector2i grid) {
+String MapManager::trigger_tile_event(Vector2i grid_pos) {
 
-    if(tile_events.has(grid))
-        return tile_events[grid];
-
-    return "";
+    return events->trigger_tile_event(grid_pos);
 }
 
-void MapManager::drop_loot(Node2D *item_scene,Vector2i grid) {
+////////////////////////
+// DROP
+////////////////////////
+
+void MapManager::drop_loot(Node2D *item_scene,Vector2i grid_pos) {
 
     if(!item_scene) return;
 
-    item_scene->set_position(get_tile_center(grid));
+    item_scene->set_position(get_tile_center(grid_pos));
     drop_root->add_child(item_scene);
 }
 
-void MapManager::plant_crop(Vector2i grid,int source_id,Vector2i atlas) {
+////////////////////////
+// FARMING
+////////////////////////
 
-    decoration->set_cell(grid,source_id,atlas);
+void MapManager::plant_crop(Vector2i grid_pos,int source_id,Vector2i atlas) {
+
+    tile->plant_crop(grid_pos, source_id, atlas);
 }
 
-void MapManager::harvest_crop(Vector2i grid) {
+void MapManager::harvest_crop(Vector2i grid_pos) {
 
-    decoration->erase_cell(grid);
+    tile->harvest_crop(grid_pos);
 }

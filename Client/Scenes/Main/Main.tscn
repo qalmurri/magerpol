@@ -40,6 +40,7 @@ tile_set = SubResource("TileSet_qtv3y")
 [node name="Players" type="Players" parent="World/EntityManager"]
 
 [node name="Player" parent="World/EntityManager/Players" instance=ExtResource("2_i3fi7")]
+position = Vector2(168, 160)
 
 [node name="CombatManager" type="CombatManager" parent="World"]
 
@@ -48,3 +49,4 @@ tile_set = SubResource("TileSet_qtv3y")
 [node name="UI" type="Node" parent="."]
 
 [node name="Joystick" parent="UI" instance=ExtResource("2_cmk6n")]
+position = Vector2(1, 288)

@@ -27,6 +27,7 @@ protected:
 
 public:
     void _ready();
+    void _process(double delta) override;
 
     // Getter supaya manager bisa diakses dari World
     MapManager* get_map_manager() const { return map_manager; }

@@ -1,8 +1,15 @@
 #include "Movement.h"
-#include <godot_cpp/classes/engine.hpp>
+#include "Players.h"
+#include "../Core/MapManager.h"
+
 #include <godot_cpp/core/class_db.hpp>
 
 using namespace godot;
+
+void Movement::_ready() {
+
+    map_manager = get_node<MapManager>("../../MapManager");
+}
 
 void Movement::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_speed", "speed"), &Movement::set_speed);
@@ -13,15 +20,37 @@ void Movement::_bind_methods() {
 }
 
 void Movement::_process(double delta) {
-    if (Engine::get_singleton()->is_editor_hint()) return;
 
     if (!input_handler) return;
 
     Vector2 dir = input_handler->get_joystick_direction();
 
-    Node2D* parent2d = Object::cast_to<Node2D>(get_parent());
+    Node* p = get_parent();
 
-    if (parent2d) {
-        parent2d->set_position(parent2d->get_position() + dir * speed * delta);
+    while (p) {
+
+        Players* players = Object::cast_to<Players>(p);
+
+        if (players) {
+            players->try_move(dir);
+            break;
+        }
+
+        p = p->get_parent();
     }
+}
+
+void Movement::move_to(Vector2i new_grid) {
+
+    if(!map_manager) return;
+
+    Node2D* owner = Object::cast_to<Node2D>(get_parent());
+
+    if(!owner) return;
+
+    Vector2 world_pos = map_manager->grid_to_world(new_grid);
+
+    owner->set_position(world_pos);
+
+    map_manager->update_entity_grid(owner, new_grid);
 }

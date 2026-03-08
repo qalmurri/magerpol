@@ -31,20 +31,19 @@ void Players::_ready() {
     UtilityFunctions::print("Players ready");
 
     player_visual = Object::cast_to<Node2D>(get_node_or_null("Player"));
-    if (!player_visual) {
-        UtilityFunctions::printerr("Players: Player visual not found!");
-        return;
+    
+    // Mencari EntityManager di parent (lebih aman)
+    EntityManager* entity_manager = nullptr;
+    Node* p = get_parent();
+    while (p) {
+        entity_manager = Object::cast_to<EntityManager>(p);
+        if (entity_manager) break;
+        p = p->get_parent();
     }
 
-    EntityManager* entity_manager =
-        Object::cast_to<EntityManager>(get_parent());
-
-    if (entity_manager) {
+    if (entity_manager && player_visual) {
         entity_manager->register_player(player_visual);
     }
-
-    if (map_manager)
-        move_to_grid(grid_pos);
 }
 
 void Players::set_grid_pos(Vector2i grid) {
@@ -73,4 +72,26 @@ void Players::move_to_grid(Vector2i grid) {
 
 void Players::set_map_manager(MapManager* manager) {
     map_manager = manager;
+}
+
+void Players::try_move(Vector2 dir) {
+
+    if (!map_manager) return;
+
+    Vector2i move(0,0);
+
+    if (dir.x > 0.5) move.x = 1;
+    if (dir.x < -0.5) move.x = -1;
+    if (dir.y > 0.5) move.y = 1;
+    if (dir.y < -0.5) move.y = -1;
+
+    if (move == Vector2i(0,0))
+        return;
+
+    Vector2i target = grid_pos + move;
+
+    if (!map_manager->is_walkable(target))
+        return;
+
+    move_to_grid(target);
 }

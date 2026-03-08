@@ -9,11 +9,15 @@
 // Core 
 #include "Core/MapManager.h"
 #include "Core/World.h"
+#include "Core/CoordinateSystem.h"
+#include "Core/GridSystem.h"
+#include "Core/TileSystem.h"
 
 // Gameplay
 #include "Gameplay/CombatManager.h"
 #include "Gameplay/DropManager.h"
 #include "Gameplay/EntityManager.h"
+#include "Gameplay/TileEventManager.h"
 
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/core/class_db.hpp>
@@ -32,11 +36,15 @@ void initialize_module(ModuleInitializationLevel p_level) {
     // Core 
     ClassDB::register_class<MapManager>();
     ClassDB::register_class<World>();
+    ClassDB::register_class<CoordinateSystem>();
+    ClassDB::register_class<GridSystem>();
+    ClassDB::register_class<TileSystem>();
 
     // Gameplay
     ClassDB::register_class<CombatManager>();
     ClassDB::register_class<DropManager>();
     ClassDB::register_class<EntityManager>();
+    ClassDB::register_class<TileEventManager>();
 }
 
 void uninitialize_module(ModuleInitializationLevel p_level) {

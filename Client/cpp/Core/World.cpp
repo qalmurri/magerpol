@@ -17,28 +17,50 @@ void World::_bind_methods() {
 void World::_ready() {
     UtilityFunctions::print("World ready");
 
+    // Jika script ini menempel di node "World", maka anaknya cukup dipanggil namanya saja
     map_manager = Object::cast_to<MapManager>(get_node_or_null("MapManager"));
     drop_manager = Object::cast_to<DropManager>(get_node_or_null("DropManager"));
     combat_manager = Object::cast_to<CombatManager>(get_node_or_null("CombatManager"));
 
+    // EntityManager juga anak langsung dari World
     EntityManager* entity_manager = Object::cast_to<EntityManager>(get_node_or_null("EntityManager"));
-    if (!entity_manager) {
-        UtilityFunctions::printerr("EntityManager not found!");
+    
+    if (!entity_manager || !map_manager) {
+        // Jika masih error, print path aslinya untuk debug
+        UtilityFunctions::printerr("World: Critical managers missing! Path check: ", get_path());
         return;
     }
 
-    // Daftarkan Players/Player di EntityManager
-    Players* players_node = Object::cast_to<Players>(entity_manager->get_node_or_null("Players"));
-    if (players_node) {
-        Node2D* player = Object::cast_to<Node2D>(
-            players_node->get_node_or_null("Player")
-        );
+    // 2. Ambil node Players yang berada di dalam EntityManager
+    players = Object::cast_to<Players>(entity_manager->get_node_or_null("Players"));
+    
+    if (players) {
+        // PENTING: Berikan MapManager ke Players agar ia bisa menghitung grid_to_world
+        players->set_map_manager(map_manager);
         
-        if (player) {
-            entity_manager->register_player(player);
+        // Daftarkan visual player ke registry EntityManager
+        Node2D* player_node = Object::cast_to<Node2D>(players->get_node_or_null("Player"));
+        if (player_node) {
+            entity_manager->register_player(player_node);
         }
-        players_node->set_map_manager(map_manager);
+        
+        // Inisialisasi posisi awal player di grid (misal 0,0)
+        players->move_to_grid(Vector2i(0, 0));
     } else {
-        UtilityFunctions::printerr("Players not found inside EntityManager!");
+        UtilityFunctions::printerr("World: Players node not found!");
+    }
+}
+
+void World::_process(double delta) {
+    if (players && map_manager) {
+        // Ambil posisi global visual player melalui Players controller
+        Node2D* p_visual = Object::cast_to<Node2D>(players->get_node_or_null("Player"));
+        if (p_visual) {
+            Vector2 global_pos = p_visual->get_global_position();
+            Vector2i current_grid = map_manager->world_to_grid(global_pos);
+            
+            // World sekarang tahu koordinat grid player setiap saat
+            // UtilityFunctions::print("Player is at grid: ", current_grid);
+        }
     }
 }

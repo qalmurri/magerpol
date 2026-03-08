@@ -22,6 +22,7 @@ protected:
 
 public:
     void _ready();
+    void try_move(Vector2 dir);
 
     void set_grid_pos(Vector2i grid);
     Vector2i get_grid_pos() const { return grid_pos; }
