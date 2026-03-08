@@ -17,7 +17,7 @@ protected:
     static void _bind_methods();
 
 public:
-
+    void _ready();
     void set_gold_scene(Ref<PackedScene> scene);
     void drop_gold(Vector2 pos, int amount);
 };

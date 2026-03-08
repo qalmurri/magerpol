@@ -19,7 +19,7 @@ protected:
     static void _bind_methods();
 
 public:
-
+    void _ready();
     void register_player(Node2D *node);
     void register_enemy(Node2D *node);
     void register_npc(Node2D *node);

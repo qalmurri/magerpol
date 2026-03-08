@@ -1,8 +1,12 @@
 #include "EntityManager.h"
-
+#include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
 using namespace godot;
+
+void EntityManager::_ready() {
+    UtilityFunctions::print("EntityManager ready");
+}
 
 void EntityManager::_bind_methods() {}
 

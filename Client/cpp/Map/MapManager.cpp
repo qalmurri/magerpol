@@ -34,6 +34,7 @@ void MapManager::_bind_methods() {
 }
 
 void MapManager::_ready() {
+    UtilityFunctions::print("MapManager ready");
 
     tilemap = Object::cast_to<TileMap>(get_node_or_null("../TileMap"));
 

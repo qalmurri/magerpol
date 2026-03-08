@@ -9,6 +9,10 @@ void DropManager::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_gold_scene","scene"), &DropManager::set_gold_scene);
 }
 
+void DropManager::_ready() {
+    UtilityFunctions::print("DropManager ready");
+}
+
 void DropManager::set_gold_scene(Ref<PackedScene> scene) {
 
     gold_scene = scene;

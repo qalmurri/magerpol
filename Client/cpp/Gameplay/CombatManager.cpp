@@ -1,10 +1,14 @@
 #include "CombatManager.h"
-
+#include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
 using namespace godot;
 
 void CombatManager::_bind_methods() {}
+
+void CombatManager::_ready() {
+    UtilityFunctions::print("CombatManager ready");
+}
 
 void CombatManager::apply_damage(Node2D *target, int damage) {
 
