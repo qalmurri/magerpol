@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://da26c3bdjtufs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyl7u"]
+
+[node name="Thief" type="CharacterBody2D"]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jyl7u")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Visual"]
+
+[node name="Marker" type="Marker2D" parent="Visual"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnfp5w0u0bf5c"]
+
+[ext_resource type="PackedScene" uid="uid://qw1ws5tagrjw" path="res://Scenes/Entity/Clients/Player.tscn" id="1_t2owd"]
+[ext_resource type="PackedScene" uid="uid://dxbixv0ld7dog" path="res://Scenes/Entity/NPCs/Seller.tscn" id="2_vqc4v"]
+[ext_resource type="PackedScene" uid="uid://ctw6vhdi85x2s" path="res://Scenes/Entity/Animals/Chicken.tscn" id="3_q0ifp"]
+[ext_resource type="PackedScene" uid="uid://da26c3bdjtufs" path="res://Scenes/Entity/Enemies/Thief.tscn" id="4_8u5h4"]
+[ext_resource type="PackedScene" uid="uid://dyw682sgcqq4m" path="res://Scenes/World/Interior/House000.tscn" id="5_6co8n"]
+[ext_resource type="PackedScene" uid="uid://dpvv1epuosldt" path="res://Scenes/Entity/Objects/Chest.tscn" id="5_8p0ck"]
+
+[node name="ACT00" type="Node2D"]
+
+[node name="MapManager" type="Node2D" parent="."]
+
+[node name="TileMap" type="Node2D" parent="MapManager"]
+
+[node name="Ground" type="Node2D" parent="MapManager/TileMap"]
+
+[node name="Decoration" type="Node2D" parent="MapManager/TileMap"]
+
+[node name="Collision" type="Node2D" parent="MapManager/TileMap"]
+
+[node name="EntityManager" type="Node2D" parent="."]
+
+[node name="Clients" type="Node2D" parent="EntityManager"]
+
+[node name="Player" parent="EntityManager/Clients" instance=ExtResource("1_t2owd")]
+
+[node name="NPCs" type="Node2D" parent="EntityManager"]
+
+[node name="Seller" parent="EntityManager/NPCs" instance=ExtResource("2_vqc4v")]
+
+[node name="Animals" type="Node2D" parent="EntityManager"]
+
+[node name="Chicken" parent="EntityManager/Animals" instance=ExtResource("3_q0ifp")]
+
+[node name="Enemies" type="Node2D" parent="EntityManager"]
+
+[node name="Thief" parent="EntityManager/Enemies" instance=ExtResource("4_8u5h4")]
+
+[node name="Objects" type="Node2D" parent="EntityManager"]
+
+[node name="Chest" parent="EntityManager/Objects" instance=ExtResource("5_8p0ck")]
+
+[node name="Interiors" type="Node2D" parent="."]
+
+[node name="House001" parent="Interiors" instance=ExtResource("5_6co8n")]

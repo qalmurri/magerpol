@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dyw682sgcqq4m"]
+
+[node name="House000" type="Node2D"]
+
+[node name="MapManager" type="Node2D" parent="."]
+
+[node name="TileMap" type="Node2D" parent="MapManager"]
+
+[node name="Ground" type="Node2D" parent="MapManager/TileMap"]
+
+[node name="Decoration" type="Node2D" parent="MapManager/TileMap"]
+
+[node name="Collision" type="Node2D" parent="MapManager/TileMap"]

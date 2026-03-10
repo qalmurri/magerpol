@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://qw1ws5tagrjw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ke1bm"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Visual"]
+
+[node name="Marker" type="Marker2D" parent="Visual"]
+
+[node name="Logic" type="Node2D" parent="."]
+
+[node name="InventoryData" type="Node2D" parent="Logic"]
+
+[node name="Stats" type="Node2D" parent="Logic"]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ke1bm")
+
+[node name="CameraManager" type="Camera2D" parent="."]

@@ -17,10 +17,7 @@ env.Append(CXXFLAGS=["-std=c++17"])
 env.Append(LINKFLAGS=["-shared"])
 
 sources = (
-    Glob("register_types.cpp") + 
-    Glob("Player/*.cpp") + 
-    Glob("Core/*.cpp") + 
-    Glob("Gameplay/*.cpp")
+    Glob("register_types.cpp")
 )
 
 target = ARGUMENTS.get("target", "debug")
