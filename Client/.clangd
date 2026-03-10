@@ -4,3 +4,4 @@ CompileFlags:
     - -I./godot-cpp/gen/include
     - -I./godot-cpp/gdextension
     - -I./cpp
+    - -std=c++17
