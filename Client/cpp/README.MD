@@ -1,5 +1,5 @@
 CPP/
-├── Core                        # Simulation Layer
+├── Core # Simulation Layer
 │   ├── MapManager
 │   │   ├── MapManager.cpp
 │   │   ├── MapManager.h
@@ -22,14 +22,12 @@ CPP/
 │       └── House001
 │           ├── MapManager.cpp
 │           └── MapManager.h
-│
-├── Gameplay                     # Game Logic Layer
+├── Gameplay # Game Logic Layer
 │   ├── InventoryManager.cpp
 │   ├── InventoryManager.h
 │   ├── Stats.cpp
 │   └── Stats.h
-│
-├── Presentation                 # Presentation Layer
+├── Presentation # Presentation Layer
 │   ├── Visual
 │   │   ├── Sprite.cpp
 │   │   ├── Sprite.h
@@ -37,15 +35,13 @@ CPP/
 │   │   └── Marker.h
 │   └── CameraManager.cpp
 │       CameraManager.h
-│
-├── Infrastructure               # Systems & Utility Layer
+├── Infrastructure # Systems & Utility Layer
 │   ├── InventorySystem.cpp
 │   ├── InventorySystem.h
 │   ├── CameraSystem.cpp
 │   ├── CameraSystem.h
 │   ├── EntitySystem.cpp
 │   └── EntitySystem.h
-│
 ├── register_types.cpp
 ├── register_types.h
 └── SConstruct
