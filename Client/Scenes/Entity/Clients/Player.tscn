@@ -1,24 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://qw1ws5tagrjw"]
+[gd_scene load_steps=3 format=3 uid="uid://qw1ws5tagrjw"]
 
-[ext_resource type="Script" uid="uid://dd6b4ukj0xynr" path="res://Scripts/LogTree.gd" id="1_nflst"]
 [ext_resource type="Texture2D" uid="uid://cqa6n8tb51h3j" path="res://icon.svg" id="1_rduas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ke1bm"]
 
 [node name="Player" type="Player"]
-position = Vector2(0, -26.66667)
-script = ExtResource("1_nflst")
+
+[node name="Marker" type="Node2D" parent="."]
+
+[node name="Tool" type="Marker2D" parent="Marker"]
+
+[node name="InteractionPoint" type="Marker2D" parent="Marker"]
+
+[node name="DamageText" type="Marker2D" parent="Marker"]
+
+[node name="ItemDrop" type="Marker2D" parent="Marker"]
 
 [node name="Visual" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="Visual"]
+[node name="Pants" type="Sprite2D" parent="Visual"]
 texture = ExtResource("1_rduas")
 
-[node name="Marker" type="Marker2D" parent="Visual"]
+[node name="Shirt" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+[node name="Head" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Hair" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
+
+[node name="LeftHand" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
+
+[node name="RightHand" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visual")
+
+[node name="CollisionPlayer" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ke1bm")
+
+[node name="Interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 shape = SubResource("CircleShape2D_ke1bm")
 
 [node name="CameraManager" type="Camera2D" parent="."]

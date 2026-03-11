@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnfp5w0u0bf5c"]
 
 [ext_resource type="Texture2D" uid="uid://cqa6n8tb51h3j" path="res://icon.svg" id="1_clkqi"]
-[ext_resource type="PackedScene" uid="uid://qw1ws5tagrjw" path="res://Scenes/Entity/Clients/Player.tscn" id="1_t2owd"]
+[ext_resource type="PackedScene" uid="uid://qw1ws5tagrjw" path="res://Scenes/Entity/Clients/Player.tscn" id="2_clkqi"]
 [ext_resource type="PackedScene" uid="uid://dxbixv0ld7dog" path="res://Scenes/Entity/NPCs/Seller.tscn" id="2_vqc4v"]
 [ext_resource type="PackedScene" uid="uid://ctw6vhdi85x2s" path="res://Scenes/Entity/Animals/Chicken.tscn" id="3_q0ifp"]
 [ext_resource type="PackedScene" uid="uid://da26c3bdjtufs" path="res://Scenes/Entity/Enemies/Thief.tscn" id="4_8u5h4"]
@@ -27,7 +27,7 @@ texture = ExtResource("1_clkqi")
 
 [node name="Clients" type="Node2D" parent="EntityManager"]
 
-[node name="Player" parent="EntityManager/Clients" instance=ExtResource("1_t2owd")]
+[node name="Player" parent="EntityManager/Clients" instance=ExtResource("2_clkqi")]
 position = Vector2(0, -20.070337)
 
 [node name="NPCs" type="Node2D" parent="EntityManager"]
