@@ -1,20 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://qw1ws5tagrjw"]
+[gd_scene load_steps=4 format=3 uid="uid://qw1ws5tagrjw"]
+
+[ext_resource type="Script" uid="uid://dd6b4ukj0xynr" path="res://Scripts/LogTree.gd" id="1_nflst"]
+[ext_resource type="Texture2D" uid="uid://cqa6n8tb51h3j" path="res://icon.svg" id="1_rduas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ke1bm"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Player"]
+position = Vector2(0, -26.66667)
+script = ExtResource("1_nflst")
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="Visual"]
+texture = ExtResource("1_rduas")
 
 [node name="Marker" type="Marker2D" parent="Visual"]
 
-[node name="Logic" type="Node2D" parent="."]
-
-[node name="InventoryData" type="Node2D" parent="Logic"]
-
-[node name="Stats" type="Node2D" parent="Logic"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ke1bm")

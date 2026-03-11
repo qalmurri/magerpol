@@ -1,5 +1,7 @@
 #include "register_types.h"
 
+#include "Entity/Player/Player.h"
+
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
@@ -10,7 +12,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
         return;
     }
 
-    // ClassDB::register_class<MapManager>();
+    ClassDB::register_class<Player>();
 }
 
 void uninitialize_module(ModuleInitializationLevel p_level) {
