@@ -1,4 +1,4 @@
-#include "joystick.h"
+#include "Joystick.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 

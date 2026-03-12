@@ -1,6 +1,7 @@
 #include "register_types.h"
 
 #include "Entity/Player/Player.h"
+#include "Input/Joystick.h"
 
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/core/class_db.hpp>
@@ -13,6 +14,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
     }
 
     ClassDB::register_class<Player>();
+    ClassDB::register_class<Joystick>();
 }
 
 void uninitialize_module(ModuleInitializationLevel p_level) {
