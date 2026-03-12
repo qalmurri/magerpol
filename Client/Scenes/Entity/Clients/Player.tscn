@@ -1,6 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://qw1ws5tagrjw"]
+[gd_scene load_steps=15 format=3 uid="uid://qw1ws5tagrjw"]
 
-[ext_resource type="Texture2D" uid="uid://cqa6n8tb51h3j" path="res://icon.svg" id="1_rduas"]
+[ext_resource type="Texture2D" uid="uid://dlv6mmynfnvcr" path="res://Assets/Sprites/Skins/TestPants.png" id="1_nflst"]
+[ext_resource type="Texture2D" uid="uid://cmeyj2y5d1llg" path="res://Assets/Sprites/Skins/TestShirt.png" id="2_yxhy4"]
+[ext_resource type="Texture2D" uid="uid://duwf3r3apbno5" path="res://Assets/Sprites/Skins/TestHead.png" id="3_mjpxm"]
+[ext_resource type="Texture2D" uid="uid://b7f08jswee4c5" path="res://Assets/Sprites/Skins/TestHair.png" id="4_uuo5h"]
+[ext_resource type="Texture2D" uid="uid://dymgwecr2c6xd" path="res://Assets/Sprites/Skins/TestLeftHand.png" id="5_gyu8s"]
+[ext_resource type="Texture2D" uid="uid://bf0n64n36bkds" path="res://Assets/Sprites/Skins/TestRightHand.png" id="6_s3g7r"]
+[ext_resource type="Texture2D" uid="uid://du1yq5owegj7u" path="res://Assets/Sprites/Skins/TestLeftTool.png" id="7_aw8em"]
+[ext_resource type="Texture2D" uid="uid://do7mucwql2t1s" path="res://Assets/Sprites/Skins/TestRightTool.png" id="8_6ru1v"]
+[ext_resource type="Texture2D" uid="uid://bcg2plj4kxsej" path="res://Assets/Sprites/Skins/TestBag.png" id="9_4xid3"]
 
 [sub_resource type="Animation" id="Animation_tdg18"]
 length = 0.001
@@ -112,117 +120,34 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pants:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_rduas"]
 resource_name = "idle"
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
+tracks/0/path = NodePath("Pants:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 1.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Shirt:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pants:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.8333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hair:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.16666667, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LeftHand:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 1.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("RightHand:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.06666667, 1.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LeftTool:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.16666667, 0.73333335),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("RightTool:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.2, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Bag:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.2, 0.93333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0]
 }
 
 [sub_resource type="Animation" id="Animation_nflst"]
@@ -361,31 +286,48 @@ _data = {
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Pants" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+texture = ExtResource("1_nflst")
+hframes = 30
 
 [node name="Shirt" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("2_yxhy4")
+hframes = 30
 
 [node name="Head" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("3_mjpxm")
+hframes = 30
 
 [node name="Hair" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("4_uuo5h")
+hframes = 30
 
 [node name="LeftHand" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("5_gyu8s")
+hframes = 30
 
 [node name="RightHand" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("6_s3g7r")
+hframes = 30
 
 [node name="LeftTool" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("7_aw8em")
+hframes = 30
 
 [node name="RightTool" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("8_6ru1v")
+hframes = 30
 
 [node name="Bag" type="Sprite2D" parent="Visual"]
-texture = ExtResource("1_rduas")
+visible = false
+texture = ExtResource("9_4xid3")
+hframes = 30
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Visual")
