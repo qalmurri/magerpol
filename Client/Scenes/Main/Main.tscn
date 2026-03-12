@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6bbqhq6wnykp"]
+[gd_scene load_steps=3 format=3 uid="uid://c6bbqhq6wnykp"]
 
 [ext_resource type="PackedScene" uid="uid://cnfp5w0u0bf5c" path="res://Scenes/World/ACT00.tscn" id="1_p8rbg"]
+[ext_resource type="PackedScene" uid="uid://c20lej0u1gstc" path="res://Scenes/UI/Joystick.tscn" id="2_qtv3y"]
 
 [node name="Main" type="Node2D"]
 
@@ -11,6 +12,9 @@
 [node name="UI" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="Joystick" parent="UI/CanvasLayer" instance=ExtResource("2_qtv3y")]
+position = Vector2(4, 292)
 
 [node name="Network" type="Node2D" parent="."]
 

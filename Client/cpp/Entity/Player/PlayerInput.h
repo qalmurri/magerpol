@@ -3,15 +3,18 @@
 
 #include <godot_cpp/variant/vector2.hpp>
 
-using namespace godot;
+namespace godot {
+class Joystick;
+}
 
 class PlayerInput {
 
+private:
+    godot::Joystick *joystick = nullptr;
+
 public:
-
-    PlayerInput();
-
-    Vector2 get_direction();
+    void setup(godot::Joystick *j);
+    godot::Vector2 get_direction();
 };
 
 #endif

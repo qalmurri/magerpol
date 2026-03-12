@@ -16,6 +16,7 @@
 #include "PlayerMovement.h"
 #include "PlayerCamera.h"
 #include "PlayerStateMachine.h"
+#include "../../Input/Joystick.h"
 #include "../../Gameplay/Stats/Stats.h"
 #include "../../Gameplay/Inventory/Inventory.h"
 
@@ -32,6 +33,8 @@ private:
     PlayerMovement movement;
     PlayerCamera camera;
     PlayerStateMachine state_machine;
+
+    Joystick *joystick = nullptr;
 
     CollisionShape2D *collisionplayer = nullptr;
     Camera2D *cameramanager = nullptr;

@@ -1,22 +1,17 @@
 #include "PlayerInput.h"
-
-#include <godot_cpp/classes/input.hpp>
+#include "../../Input/Joystick.h"
 
 using namespace godot;
 
-PlayerInput::PlayerInput() {}
+void PlayerInput::setup(Joystick *j) {
+    joystick = j;
+}
 
 Vector2 PlayerInput::get_direction() {
 
-    Input *input = Input::get_singleton();
+    if (joystick) {
+        return joystick->get_direction();
+    }
 
-    Vector2 direction;
-
-    direction.x = input->get_action_strength("ui_right")
-                - input->get_action_strength("ui_left");
-
-    direction.y = input->get_action_strength("ui_down")
-                - input->get_action_strength("ui_up");
-
-    return direction.normalized();
+    return Vector2(0,0);
 }

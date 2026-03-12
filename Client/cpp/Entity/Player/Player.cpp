@@ -2,6 +2,7 @@
 
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
 
@@ -16,7 +17,7 @@ void Player::_ready() {
     collisionplayer = Object::cast_to<CollisionShape2D>(get_node_or_null("CollisionPlayer"));
     cameramanager = Object::cast_to<Camera2D>(get_node_or_null("CameraManager"));
     interaction = Object::cast_to<Area2D>(get_node_or_null("Interaction"));
-    animationplayer = Object::cast_to<AnimationPlayer>(get_node_or_null("animationplayer"));
+    animationplayer = Object::cast_to<AnimationPlayer>(get_node_or_null("AnimationPlayer"));
 
     marker = Object::cast_to<Node2D>(get_node_or_null("Marker"));
     tool = Object::cast_to<Marker2D>(get_node_or_null("Marker/Tool"));
@@ -32,9 +33,14 @@ void Player::_ready() {
     lefthand = Object::cast_to<Sprite2D>(get_node_or_null("Visual/LeftHand"));
     righthand = Object::cast_to<Sprite2D>(get_node_or_null("Visual/RightHand"));
 
+    joystick = Object::cast_to<Joystick>(get_node_or_null("/root/Main/UI/CanvasLayer/Joystick"));
+    input.setup(joystick);
+
     movement.setup(this);
     camera.setup(cameramanager);
     camera.activate();
+
+    state_machine.setup(this);
 }
 
 void Player::_physics_process(double delta) {
@@ -47,7 +53,14 @@ void Player::_physics_process(double delta) {
 }
 
 void Player::play_animation(const char *anim) {
+
     if (!animationplayer) {
+        UtilityFunctions::print("AnimationPlayer not found!");
+        return;
+    }
+
+    if (!animationplayer->has_animation(anim)) {
+        UtilityFunctions::print("Animation not found: ", anim);
         return;
     }
 

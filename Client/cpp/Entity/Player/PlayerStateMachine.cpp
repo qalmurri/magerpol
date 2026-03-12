@@ -12,6 +12,9 @@ PlayerStateMachine::State PlayerStateMachine::get_state() const {
 }
 
 void PlayerStateMachine::change_state(State new_state) {
+    if (!player) {
+        return;
+    }
 
     if (current_state == new_state) {
         return;
