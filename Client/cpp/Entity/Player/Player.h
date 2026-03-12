@@ -54,6 +54,9 @@ private:
     Sprite2D *hair = nullptr;
     Sprite2D *lefthand = nullptr;
     Sprite2D *righthand = nullptr;
+    Sprite2D *lefttool = nullptr;
+    Sprite2D *righttool = nullptr;
+    Sprite2D *bag = nullptr;
 
 protected:
     static void _bind_methods();

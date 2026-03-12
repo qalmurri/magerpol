@@ -32,6 +32,9 @@ void Player::_ready() {
     hair = Object::cast_to<Sprite2D>(get_node_or_null("Visual/Hair"));
     lefthand = Object::cast_to<Sprite2D>(get_node_or_null("Visual/LeftHand"));
     righthand = Object::cast_to<Sprite2D>(get_node_or_null("Visual/RightHand"));
+    lefttool = Object::cast_to<Sprite2D>(get_node_or_null("Visual/LeftTool"));
+    righttool = Object::cast_to<Sprite2D>(get_node_or_null("Visual/RightTool"));
+    bag = Object::cast_to<Sprite2D>(get_node_or_null("Visual/Bag"));
 
     joystick = Object::cast_to<Joystick>(get_node_or_null("/root/Main/UI/CanvasLayer/Joystick"));
     input.setup(joystick);
