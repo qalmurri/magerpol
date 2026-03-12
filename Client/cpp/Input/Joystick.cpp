@@ -2,6 +2,8 @@
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 
+#include <godot_cpp/variant/utility_functions.hpp>
+
 using namespace godot;
 
 void Joystick::_bind_methods() {
@@ -15,7 +17,7 @@ Joystick::Joystick() {
 Joystick::~Joystick() {}
 
 void Joystick::_ready() {
-    knob = get_node<Sprite2D>("Knob");
+    knob = Object::cast_to<Sprite2D>(get_node_or_null("Knob"));
     
     // Mengambil radius dari shape (asumsi menggunakan CircleShape2D)
     Ref<CircleShape2D> shape_ref = get_shape();
@@ -67,6 +69,7 @@ void Joystick::_process(double delta) {
     
     // Kalkulasi output (normalized)
     output = (knob->get_position() - stick_center).normalized();
+    UtilityFunctions::print(output);
 }
 
 Vector2 Joystick::get_direction() const {
