@@ -16,6 +16,7 @@
 #include "PlayerMovement.h"
 #include "PlayerCamera.h"
 #include "PlayerStateMachine.h"
+#include "PlayerAnimationController.h"
 #include "../../Input/Joystick.h"
 #include "../../Gameplay/Stats/Stats.h"
 #include "../../Gameplay/Inventory/Inventory.h"
@@ -33,6 +34,7 @@ private:
     PlayerMovement movement;
     PlayerCamera camera;
     PlayerStateMachine state_machine;
+    PlayerAnimationController animation;
 
     Joystick *joystick = nullptr;
 
@@ -67,15 +69,8 @@ public:
 
     void _ready();
     void _physics_process(double delta);
-    void play_animation(const String &anim);
 
-    void play_idle();
-    void play_walk();
-    void play_run();
-    void play_attack();
-    void play_use_tool();
-    void play_interact();
-    void play_dead();
+    PlayerAnimationController &get_animation();
 };
 
 #endif

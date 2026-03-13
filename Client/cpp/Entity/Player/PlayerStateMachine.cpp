@@ -26,31 +26,31 @@ void PlayerStateMachine::change_state(State new_state) {
     switch (current_state) {
 
         case State::IDLE:
-            player->play_idle();
+            player->get_animation().play_idle();
         break;
 
         case State::WALK:
-            player->play_walk();
+            player->get_animation().play_walk();
         break;
 
         case State::RUN:
-            player->play_run();
+            player->get_animation().play_run();
         break;
 
         case State::ATTACK:
-            player->play_attack();
+            player->get_animation().play_attack();
         break;
 
         case State::USE_TOOL:
-            player->play_use_tool();
+            player->get_animation().play_use_tool();
         break;
 
         case State::INTERACT:
-            player->play_interact();
+            player->get_animation().play_interact();
         break;
 
         case State::DEAD:
-            player->play_dead();
+            player->get_animation().play_dead();
         break;
     }
 }
