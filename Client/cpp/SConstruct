@@ -13,19 +13,63 @@ env.Append(CPPPATH=[
 
 env.Append(LIBPATH=[godot_cpp + "/bin"])
 env.Append(LIBS=["godot-cpp.linux.template_debug.x86_64"])
+
 env.Append(CXXFLAGS=["-std=c++17"])
 env.Append(LINKFLAGS=["-shared"])
 
-sources = (
-    Glob("register_types.cpp") +
-    Glob("Core/*.cpp") +
-    Glob("Entity/Player/*.cpp") +
-    Glob("Input/*.cpp") +
-    Glob("Gameplay/Inventory/*.cpp") +
-    Glob("Gameplay/Stats/*.cpp") 
-)
+core_sources = [
+    "Core/Logger.cpp",
+    "Core/Random.cpp",
+    "Core/EventBus.cpp",
+    "Core/FileSystem.cpp",
+    "Core/Config.cpp",
+    "Core/Profiler.cpp",
+    "Core/Time.cpp",
+]
+
+event_sources = [
+    "Events/PlayerEvents.cpp",
+]
+
+player_sources = [
+    "Entity/Player/Player.cpp",
+    "Entity/Player/PlayerAnimationController.cpp",
+    "Entity/Player/PlayerCamera.cpp",
+    "Entity/Player/PlayerInput.cpp",
+    "Entity/Player/PlayerMovement.cpp",
+    "Entity/Player/PlayerStateMachine.cpp",
+]
+
+input_sources = [
+    "Input/Joystick.cpp",
+]
+
+inventory_sources = [
+    "Gameplay/Inventory/Inventory.cpp",
+]
+
+stats_sources = [
+    "Gameplay/Stats/Stats.cpp",
+]
+
+sources = [
+    "register_types.cpp"
+]
+
+sources += core_sources
+sources += event_sources
+sources += player_sources
+sources += input_sources
+sources += inventory_sources
+sources += stats_sources
+
+
+# -----------------------
+# Build Target
+# -----------------------
 
 target = ARGUMENTS.get("target", "debug")
+
 library_name = "../bin/libplayer." + target + ".so"
 
 library = env.SharedLibrary(
