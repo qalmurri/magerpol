@@ -67,7 +67,15 @@ public:
 
     void _ready();
     void _physics_process(double delta);
-    void play_animation(const char *anim);
+    void play_animation(const String &anim);
+
+    void play_idle();
+    void play_walk();
+    void play_run();
+    void play_attack();
+    void play_use_tool();
+    void play_interact();
+    void play_dead();
 };
 
 #endif

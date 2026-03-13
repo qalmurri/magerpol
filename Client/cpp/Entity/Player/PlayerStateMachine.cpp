@@ -12,6 +12,7 @@ PlayerStateMachine::State PlayerStateMachine::get_state() const {
 }
 
 void PlayerStateMachine::change_state(State new_state) {
+
     if (!player) {
         return;
     }
@@ -25,27 +26,31 @@ void PlayerStateMachine::change_state(State new_state) {
     switch (current_state) {
 
         case State::IDLE:
-            player->play_animation("idle");
+            player->play_idle();
         break;
 
         case State::WALK:
-            player->play_animation("walk");
+            player->play_walk();
+        break;
+
+        case State::RUN:
+            player->play_run();
         break;
 
         case State::ATTACK:
-            player->play_animation("attack");
+            player->play_attack();
         break;
 
         case State::USE_TOOL:
-            player->play_animation("use_tool");
+            player->play_use_tool();
         break;
 
         case State::INTERACT:
-            player->play_animation("interact");
+            player->play_interact();
         break;
 
         case State::DEAD:
-            player->play_animation("dead");
+            player->play_dead();
         break;
     }
 }

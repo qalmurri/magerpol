@@ -12,9 +12,10 @@ public:
     enum class State {
         IDLE,
         WALK,
+        RUN,
+        ATTACK,
         USE_TOOL,
         INTERACT,
-        ATTACK,
         DEAD
     };
 

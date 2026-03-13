@@ -1,3 +1,22 @@
+// Player
+//  ├─ PlayerInput
+//  ├─ PlayerMovement
+//  ├─ PlayerCamera
+//  ├─ PlayerStateMachine
+//  └─ PlayerAnimationController
+// Input
+//  ↓
+// StateMachine
+//  ↓
+// AnimationController
+//  ↓
+// AnimationPlayer
+// case State::WALK:
+//     player->animation.play_walk();
+// break;
+// StateMachine = logic
+// AnimationController = visual
+
 #include "Player.h"
 
 #include <godot_cpp/classes/input.hpp>
@@ -55,7 +74,7 @@ void Player::_physics_process(double delta) {
     movement.move(direction);
 }
 
-void Player::play_animation(const char *anim) {
+void Player::play_animation(const String &anim) {
 
     if (!animationplayer) {
         UtilityFunctions::print("AnimationPlayer not found!");
@@ -68,4 +87,60 @@ void Player::play_animation(const char *anim) {
     }
 
     animationplayer->play(anim);
+}
+
+void Player::play_idle() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "idle" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_walk() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "walk" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_run() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "run" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_attack() {
+
+    int variant = UtilityFunctions::randi() % 4 + 1;
+    String anim = "attack" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_use_tool() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "use_tool" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_interact() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "interact" + String::num_int64(variant);
+
+    play_animation(anim);
+}
+
+void Player::play_dead() {
+
+    int variant = UtilityFunctions::randi() % 2 + 1;
+    String anim = "dead" + String::num_int64(variant);
+
+    play_animation(anim);
 }
