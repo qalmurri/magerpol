@@ -1,11 +1,6 @@
 #ifndef JOYSTICK_H
 #define JOYSTICK_H
 
-#include <godot_cpp/classes/touch_screen_button.hpp>
-#include <godot_cpp/classes/sprite2d.hpp>
-#include <godot_cpp/classes/input_event_screen_touch.hpp>
-#include <godot_cpp/classes/circle_shape2d.hpp>
-
 namespace godot {
 
 class Joystick : public TouchScreenButton {

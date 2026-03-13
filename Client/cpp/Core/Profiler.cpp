@@ -1,5 +1,4 @@
 #include "Profiler.h"
-#include <iostream>
 
 std::unordered_map<std::string,
 std::chrono::time_point<std::chrono::high_resolution_clock>> Profiler::timers;

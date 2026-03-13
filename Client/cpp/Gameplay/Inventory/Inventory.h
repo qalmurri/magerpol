@@ -1,8 +1,6 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include <vector>
-
 class Inventory {
 
 public:

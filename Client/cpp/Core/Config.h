@@ -1,8 +1,3 @@
-#pragma once
-
-#include <string>
-#include <unordered_map>
-
 class Config {
 public:
     static bool load(const std::string& path);

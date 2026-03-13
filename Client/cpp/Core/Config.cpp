@@ -1,8 +1,6 @@
 #include "Config.h"
 #include "FileSystem.h"
 
-#include <sstream>
-
 std::unordered_map<std::string, std::string> Config::values;
 
 bool Config::load(const std::string& path) {

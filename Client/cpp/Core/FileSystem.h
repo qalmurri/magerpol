@@ -1,7 +1,3 @@
-#pragma once
-
-#include <string>
-
 class FileSystem {
 public:
     static std::string read_text(const std::string& path);

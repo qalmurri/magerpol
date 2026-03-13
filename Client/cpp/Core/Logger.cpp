@@ -4,7 +4,6 @@
 // Logger::error("Animation not found");
 
 #include "Logger.h"
-#include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
 
