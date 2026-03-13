@@ -63,11 +63,6 @@ sources += input_sources
 sources += inventory_sources
 sources += stats_sources
 
-
-# -----------------------
-# Build Target
-# -----------------------
-
 target = ARGUMENTS.get("target", "debug")
 
 library_name = "../bin/libplayer." + target + ".so"
