@@ -18,6 +18,7 @@ env.Append(LINKFLAGS=["-shared"])
 
 sources = (
     Glob("register_types.cpp") +
+    Glob("Core/*.cpp") +
     Glob("Entity/Player/*.cpp") +
     Glob("Input/*.cpp") +
     Glob("Gameplay/Inventory/*.cpp") +
