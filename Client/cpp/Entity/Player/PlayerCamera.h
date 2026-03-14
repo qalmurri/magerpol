@@ -1,8 +1,6 @@
 #ifndef PLAYER_CAMERA_H
 #define PLAYER_CAMERA_H
 
-#include <godot_cpp/classes/camera2d.hpp>
-
 using namespace godot;
 
 class PlayerCamera {

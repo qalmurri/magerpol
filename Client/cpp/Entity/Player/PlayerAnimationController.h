@@ -1,9 +1,6 @@
 #ifndef PLAYER_ANIMATION_CONTROLLER_H
 #define PLAYER_ANIMATION_CONTROLLER_H
 
-#include <godot_cpp/classes/animation_player.hpp>
-#include <godot_cpp/variant/string.hpp>
-
 using namespace godot;
 
 class Player;

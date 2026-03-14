@@ -1,10 +1,7 @@
 #ifndef PLAYER_STATE_MACHINE_H
 #define PLAYER_STATE_MACHINE_H
 
-#include <godot_cpp/variant/vector2.hpp>
-
 class Player;
-
 class PlayerStateMachine {
 
 public:

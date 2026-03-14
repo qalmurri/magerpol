@@ -1,9 +1,6 @@
 #ifndef PLAYER_MOVEMENT_H
 #define PLAYER_MOVEMENT_H
 
-#include <godot_cpp/classes/character_body2d.hpp>
-#include <godot_cpp/variant/vector2.hpp>
-
 using namespace godot;
 
 class PlayerMovement {

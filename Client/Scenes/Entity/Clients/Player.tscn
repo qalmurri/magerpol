@@ -290,42 +290,34 @@ texture = ExtResource("1_nflst")
 hframes = 30
 
 [node name="Shirt" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("2_yxhy4")
 hframes = 30
 
 [node name="Head" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("3_mjpxm")
 hframes = 30
 
 [node name="Hair" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("4_uuo5h")
 hframes = 30
 
 [node name="LeftHand" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("5_gyu8s")
 hframes = 30
 
 [node name="RightHand" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("6_s3g7r")
 hframes = 30
 
 [node name="LeftTool" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("7_aw8em")
 hframes = 30
 
 [node name="RightTool" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("8_6ru1v")
 hframes = 30
 
 [node name="Bag" type="Sprite2D" parent="Visual"]
-visible = false
 texture = ExtResource("9_4xid3")
 hframes = 30
 
@@ -336,9 +328,11 @@ libraries = {
 }
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ke1bm")
 
 [node name="Interaction" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 shape = SubResource("CircleShape2D_ke1bm")

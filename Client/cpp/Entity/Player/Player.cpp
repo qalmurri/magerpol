@@ -19,10 +19,6 @@
 
 #include "Player.h"
 
-#include <godot_cpp/classes/input.hpp>
-#include <godot_cpp/variant/vector2.hpp>
-#include <godot_cpp/variant/utility_functions.hpp>
-
 using namespace godot;
 
 Player::Player() {}

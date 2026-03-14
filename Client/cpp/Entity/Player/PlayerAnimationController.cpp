@@ -1,8 +1,6 @@
 #include "PlayerAnimationController.h"
 #include "Player.h"
 
-#include <godot_cpp/variant/utility_functions.hpp>
-
 using namespace godot;
 
 void PlayerAnimationController::setup(Player *p, AnimationPlayer *anim_player) {
